@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Add a Ride</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<head>
+
+<body>
+    <body style="background:url(static/motogrp.webp);
+            background-size:1500px;
+            background-repeat: no-repeat;">
+<!-- nav- of dashboard with welcome and logout button  -->
+    
+    <div class="has-bg-img background-size:cover">
+    <style> body {
+        width:700px;
+        height: 600px;
+        margin-left: 300px;
+        margin-top: 30px;
+    }
+
+    </style>
+    </body>
+    <div class="has-bg-img background-size:cover"></div>
+<!-- <form class="d-flex justify-content-between align-items-center col-12"></form> -->
+<nav class="d-flex justify-content-between align-items-center col-12">
+<h1 class="text-center text-dark" > Add a New Ride
+    <!-- <div class="d-flex col-4 justify-content-around"> -->
+        <a href="/dashboard" class="btn btn-dark">Dashboard</a>
+        <a href="/logout"class = "btn btn-dark">Log out</a>
+    </nav>
+    <body style="background:url(static/motogrp.webp);
+            background-size:1500px;
+            background-repeat: no-repeat;">
+<!-- nav- of dashboard with welcome and logout button  -->
+    
+    <div class="has-bg-img background-size:cover">
+    <style> h1 {
+            color:darkslategrey;
+            font-size:50px;
+            font-family:fantasy;
+            font-weight: bolder;
+            }
+
+    </style>
+
+<!-- <div class="text-right"> -->
+
+
+<!-- </div> -->
+    <style> nav,h1 {
+            color:darkslategrey;
+            font-size:50px;
+            font-family:fantasy;
+            font-weight: bolder;
+            }
+            </style>
+            </nav>
+<!-- adding shows with validation messages on top  -->
+<img .img-fluid. max-width: 100%;>
+<!-- <img src="static/thismoto.jpg" class="img-fluid" alt="responsive-img"> -->
+<form action="/ride/create" method="POST" class="col-11 p-4 my-2 text-dark mx-auto">
+    <input type="hidden" name="user_id" value="{{session['user_id']}}">
+    
+    <div>
+        {% with messages = get_flashed_messages(category_filter=["ride"]) %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+        <label>Location:
+            <style> label {
+                background: fixed;
+                color:darkslategray;
+                font-family: fantasy;
+                font-weight: bold;
+                font-size: 30px;
+
+            }
+            </style>
+        </label>
+        <input type= "text" name="location">
+    </div> 
+    <div>
+        <label>Date:</label>
+        <input type= "date" name="date">
+    </div>
+    <div>
+        <label>Time:</label>
+        <input type= "time" name="time">
+    </div> 
+    <div>
+        <label>Skill Level:</label>
+        <input type="text" name="skill_level">
+    </div>
+    <div>
+        <label>Bike Type:</label>
+        <input type="text" name="bike_type">
+    </div>
+    <div>
+        <label>Description of Event:</label>
+        <div><textarea name="description" cols="50" rows="5"></textarea>
+            <style> textarea {
+            color:black;
+            background:fixed;
+            font-size:21px;
+            font-family:fantasy;
+            font-weight: bolder;
+            border-color: black 20px;
+            border-color: black;
+        }
+            </style>
+        </textarea>
+        </div>
+    </div>
+    <!-- brings back to dash  -->
+    <input type="submit" value="Add" class="btn-lg btn-dark"></input>
+        <style> input,Add {
+            background:fixed;
+            color: black;
+            font-size:21px;
+            font-family:fantasy;
+            font-weight: bolder;
+            border-radius: 10px;
+            border-color: black;
+        }
+        </style>
+  
+        
+        
+
+</form>
+       
+</body>
+</html>

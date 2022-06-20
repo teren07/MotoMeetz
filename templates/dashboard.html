@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Dashboard</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body style="background:url(static/moto5.webp);
+            background-size:1500px;
+            background-repeat: no-repeat;">
+<!-- nav- of dashboard with welcome and logout button  -->
+    
+    <div class="has-bg-img background-size:cover">
+    <!-- <img class="has-bg-img" src="static/moto5.webp" alt="static/moto5.webp"> -->
+    
+    
+    <nav class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <h1 class="text-primary-xl-d-flex col-6 justify-content-around fw-bold ">MOTOMEETZ
+            <style> h1{
+            width:100px;
+            color:black;
+            font-size:40px;
+            font-family:fantasy;
+            font-weight: bolder;
+            }
+        </style>
+        </h1>
+        <div>
+    <button class="btn-dark " type="button">
+    <a href="/logout" class="btn btn-dark btn-lg ">Log out
+        <style>  button{
+            background-color: blue;
+            font-family: fantasy;
+            font-weight: bolder;
+            color:black;
+        }
+
+        </style>
+        </a>
+    </button>
+    </div>
+    </nav>
+    <h1 class="d-flex col-6 justify-content-around text-dark"> Lets ride,  {{user.first_name}}</h1>
+    <h1 class="d-flex col-7 justify-content-around text-dark">Upcoming Events</h1>
+        <div class="col-8 mx-auto">
+            <!-- table to store information  -->
+            <table class="table table-hover text-lg">
+        <thead>
+            <tr class="table-alert text-lg">
+            <style> tr {
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                font-size: 21px;
+                font-style: italic;
+                font-weight: bold;
+                color:white;
+                backface-visibility:inherit;
+                }
+
+            </style>
+                <th>Rider</th>
+                <th>Location</th>
+                <th>Date</th>
+                <th>Skill Level</th>
+                <th>Bike Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody class="text-md ">
+            <!-- brings up all their info based on the user also validation  -->
+            {% for ride in rides %}
+                <tr class="table-alert">
+                    <td>{{ride.user.first_name}} {{ride.user.last_name}}</td>
+                    <td>{{ride.location}}</td>
+                    <td>{{ride.date.strftime('%b-%d-%Y')}}</td>
+                    <td>{{ride.skill_level}}</td>
+                    <td>{{ride.bike_type}}</td>
+                    <!-- <td>{{ride.user.first_name}} {{ride.user.last_name}}</td> -->
+                    
+                    {% if session ['user_id'] == ride.user.id%}
+                    <td><a href='/edit/ride/{{ride.id}}'>Edit</a>
+                    <a href=" /delete/ride/{{ride.id}}">Delete</a>
+                    <a href="/view/ride/{{ride.id}}">Show</a></td>
+                    {% else %}
+                    <td> <a href="/view/ride/{{ride.id}}">Show</a></td>
+                </tr>
+                    {% endif %}
+                
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- brings you to new show html -->
+    <a href="/new" class="btn-lg btn-light btn-dark text-bold " type="button">Add a New Ride
+        <style> a {
+            background-color: blue;
+            font-family: fantasy;
+            font-weight: bolder;
+            color:black;
+            size: 50px;
+        }</style>
+        </a>
+    </div>
+</body>
+<link rel="static/style.css" href="static/style.css">
+</html>
+

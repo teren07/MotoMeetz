@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Index</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body style="background:url(static/thismoto.jpg);
+            background-size:1500px;
+            background-repeat: no-repeat;">
+<!-- nav- of dashboard with welcome and logout button  -->
+    
+    <!-- <div class="has-bg-img background-size:cover"> -->
+    
+    <!-- <div class="d-flex justify-content-around"> -->
+    <div style="background:url(static/thismoto.jpg);
+            background-size:1500px;
+            background-repeat: no-repeat;">
+    </div>
+    <form action="/register" method="POST" class="col-5 bg-light text-dark">
+        <!-- <div class="d-flex justify-content-around"> -->
+            <div style="background:url(static/thismoto.jpg);
+                    background-size:1500px;
+                    background-repeat: no-repeat;">
+            </div>
+        <h1 class="text-dark">Register for MotoMeetz
+        <style> h1 {
+            text-align: center;
+            color:darkslategrey;
+            font-size:30px;
+            font-family:fantasy;
+            font-weight: bold;
+        }
+            </style>
+            </h1>
+        
+        {% with messages = get_flashed_messages(category_filter=["register"]) %}
+            {% if messages %}
+            <div class="alert alert-danger" role="alert">
+            <strong> Flash AHHHHHH!</strong>
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        </div>
+        <div class="form-group">
+        
+            <label>First Name:</label>
+            <input type= "text" name="first_name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Last Name:</label>
+            <input type= "text" name="last_name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Email:</label>
+            <input type= "email" name="email" class="form-control">
+        </div> 
+        <div class="form-group">
+            <label>Password:</label>
+            <input type= "password" name="password" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Confirm Password:</label>
+            <input type= "password" name="confirm_password" class="form-control">
+        </div>
+        <input type="submit" value="Register" class="btn-lg btn-dark">
+        <!-- <style> input {
+            font-weight: bolder;
+        }
+        </style> -->
+    </form>
+    <form action="/login" method="POST" class="col-5  bg-light text-dark">
+        <!-- <h2 class="text-dark">Login</h2> -->
+        <div class="d-flex justify-content-around">
+            <style> h2,div {
+                color:darkslategrey;
+                font-family:fantasy;
+                font-weight: bolder;
+                border-radius: 10px;
+                border-color: black;
+            }
+                </style>
+            <div style="background:url(static/thismoto.jpg);
+                    background-size:1500px;
+                    background-repeat: no-repeat;">
+            </div>
+        {% with messages = get_flashed_messages(category_filter=["login"]) %}
+            {% if messages %}
+            <div class="alert alert-danger" role="alert">
+                <strong>Flash AHHHHHH!!!!</strong>
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="form-group">
+            <label>Email:</label>
+            <input type= "email" name="email" class="form-control">
+        </div> 
+        <div class="form-group">
+        <!-- <div class="d-flex justify-content-around"> -->
+            <div style="background:url(static/thismoto.jpg);
+                        background-size:1500px;
+                        background-repeat: no-repeat;">
+                </div>
+            <label>Password:</label>
+            <input type= "password" name="password" class="form-control">
+        </div>
+        <div>
+        <input type="submit" value="Login" class="btn-lg btn-dark">
+        <style> div{
+            font-weight: 100;
+        }
+ 
+        </style>
+        </div>
+    </form>
+</body>
+</html>
