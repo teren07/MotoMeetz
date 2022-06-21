@@ -42,7 +42,7 @@
         {% with messages = get_flashed_messages(category_filter=["register"]) %}
             {% if messages %}
             <div class="alert alert-danger" role="alert">
-            <strong> Flash AHHHHHH!</strong>
+            <strong> </strong>
                 {% for message in messages %}
                     <p>{{message}}</p>
                 {% endfor %}
@@ -71,13 +71,8 @@
             <input type= "password" name="confirm_password" class="form-control">
         </div>
         <input type="submit" value="Register" class="btn-lg btn-dark">
-        <!-- <style> input {
-            font-weight: bolder;
-        }
-        </style> -->
     </form>
     <form action="/login" method="POST" class="col-5  bg-light text-dark">
-        <!-- <h2 class="text-dark">Login</h2> -->
         <div class="d-flex justify-content-around">
             <style> h2,div {
                 color:darkslategrey;
@@ -94,7 +89,7 @@
         {% with messages = get_flashed_messages(category_filter=["login"]) %}
             {% if messages %}
             <div class="alert alert-danger" role="alert">
-                <strong>Flash AHHHHHH!!!!</strong>
+                <strong></strong>
                 {% for message in messages %}
                     <p>{{message}}</p>
                 {% endfor %}
@@ -118,7 +113,6 @@
         <style> div{
             font-weight: 100;
         }
- 
         </style>
         </div>
     </form>
