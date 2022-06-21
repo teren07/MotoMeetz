@@ -26,29 +26,55 @@ def create_ride():
         return redirect('/dashboard')
 
 
-@app.route('/ride/<int:id>/update', methods=['POST'])
-def update(id):
-    if "user_id" not in session:
+@app.route('/update/ride/<int:id>',methods=['POST'])
+def update_ride(id):
+    # update ride if they are in session 
+    if 'user_id' not in session:
+        return redirect('/logout')
+    if not ride.Ride.validate_newride(request.form):
+        return redirect(f'/edit/ride/{id}')
+        # here is the data being used/entered on mysql 
+    data = {
+        "id":id,
+        "location": request.form["location"],
+        "date": request.form["date"],
+        "time": request.form["time"],
+        "skill_level": request.form["skill_level"],
+        "bike_type": request.form["bike_type"],
+        "description": request.form["description"], 
+    }
+    # after submitted update their recipe and return to dashboard
+    ride.Ride.update(data)
+    return redirect('/dashboard')
+
+def update_ride1():
+    if not ride.Ride.validate_newride(request.form):
         return redirect('/dashboard')
 
     else:
-        data= {
+        data = {
             "location": request.form["location"],
             "date": request.form["date"],
             "time":request.form["time"],
             "skill_level":request.form["skill_level"],
             "bike_type":request.form["bike_type"],
             "description": request.form["description"],
-            "id":['id'],
+            "user_id": session["user_id"],
         }
-
         ride.Ride.edit(data)
         return redirect('/dashboard')
 
-# @app.route('/delete/<int:id>')
-# def delete_car(id):
-#     car.Car.delete_car(id)
-#     return redirect ('/dashboard')
+
+
+
+
+
+
+
+
+
+
+
 
 @app.route('/delete/ride/<int:id>')
 def delete(id):
@@ -56,15 +82,7 @@ def delete(id):
     return redirect('/dashboard')
 
 
-# @app.route('/delete/car/<int:id>')
-# def delete_car(id):
-#     if 'user_id' not in session:
-#         return redirect('/logout')
-#     data = {
-#         "id":id
-#     }
-#     car.Car.delete_car(data)
-#     return redirect('/dashboard')
+
 
 
 @app.route('/view/ride/<int:id>')
@@ -90,20 +108,9 @@ def edit(id):
 
     ride.Ride.edit(request.form)
 
-    # return redirect(f"/edit/car/{id}")
+    # return redirect(f"/edit/ride/{id}")
     return redirect('/dashboard')
-    # else:
-        # data = {
-        #     "price":request.form['price'],
-        #     "model":request.form['model'],
-        #     "make":request.form['make'],
-        #     "year":request.form['year'],
-        #     "description": request.form['description'],
-        #     "user":request.form['user'],
-        # }
 
-    # car.Car.edit(data)
-    # return redirect('/dashboard')
 
 
 @app.route('/edit/ride/<int:id>')
@@ -117,5 +124,5 @@ def edit_ride(id):
         "id":session['user_id']
     }
     # if they are in session use user id and go to edit.html so they an edit
-    # their  own recipe
+    # their  own ride
     return render_template("edit.html",ride=ride.Ride.get_one(data),user=user.User.grab_userid(user_data))
