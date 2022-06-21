@@ -15,14 +15,14 @@
 <!-- nav- of dashboard with welcome and logout button  -->
     
     <div class="has-bg-img background-size:cover">
-    <!-- <img class="has-bg-img" src="static/moto5.webp" alt="static/moto5.webp"> -->
+
     
     
     <nav class="d-grid gap-2 d-md-flex justify-content-md-end">
         <h1 class="text-primary-xl-d-flex col-6 justify-content-around fw-bold ">MOTOMEETZ
             <style> h1{
             width:100px;
-            color:black;
+            color:yellow;
             font-size:40px;
             font-family:fantasy;
             font-weight: bolder;
@@ -44,8 +44,8 @@
     </button>
     </div>
     </nav>
-    <h1 class="d-flex col-6 justify-content-around text-dark"> Lets ride,  {{user.first_name}}</h1>
-    <h1 class="d-flex col-7 justify-content-around text-dark">Upcoming Events</h1>
+    <h1 class="d-flex col-6 justify-content-around "> Lets ride,  {{user.first_name}}</h1>
+    <h1 class="d-flex col-7 justify-content-around ">Upcoming Events</h1>
         <div class="col-8 mx-auto">
             <!-- table to store information  -->
             <table class="table table-hover text-lg">
@@ -56,7 +56,7 @@
                 font-size: 21px;
                 font-style: italic;
                 font-weight: bold;
-                color:white;
+                color:yellow;
                 backface-visibility:inherit;
                 }
 
@@ -78,8 +78,6 @@
                     <td>{{ride.date.strftime('%b-%d-%Y')}}</td>
                     <td>{{ride.skill_level}}</td>
                     <td>{{ride.bike_type}}</td>
-                    <!-- <td>{{ride.user.first_name}} {{ride.user.last_name}}</td> -->
-                    
                     {% if session ['user_id'] == ride.user.id%}
                     <td><a href='/edit/ride/{{ride.id}}'>Edit</a>
                     <a href=" /delete/ride/{{ride.id}}">Delete</a>
@@ -92,7 +90,7 @@
             {% endfor %}
         </tbody>
     </table>
-    <!-- brings you to new show html -->
+    <!-- brings you to new ride html -->
     <a href="/new" class="btn-lg btn-light btn-dark text-bold " type="button">Add a New Ride
         <style> a {
             background-color: blue;
