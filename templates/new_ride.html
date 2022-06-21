@@ -27,21 +27,19 @@
     </style>
     </body>
     <div class="has-bg-img background-size:cover"></div>
-<!-- <form class="d-flex justify-content-between align-items-center col-12"></form> -->
 <nav class="d-flex justify-content-between align-items-center col-12">
-<h1 class="text-center text-dark" > Add a New Ride
-    <!-- <div class="d-flex col-4 justify-content-around"> -->
+
+<h1 class="text-center " > Add a New Ride
         <a href="/dashboard" class="btn btn-dark">Dashboard</a>
         <a href="/logout"class = "btn btn-dark">Log out</a>
     </nav>
     <body style="background:url(static/motogrp.webp);
             background-size:1500px;
             background-repeat: no-repeat;">
-<!-- nav- of dashboard with welcome and logout button  -->
     
     <div class="has-bg-img background-size:cover">
     <style> h1 {
-            color:darkslategrey;
+            color:yellow;
             font-size:50px;
             font-family:fantasy;
             font-weight: bolder;
@@ -49,21 +47,17 @@
 
     </style>
 
-<!-- <div class="text-right"> -->
-
-
-<!-- </div> -->
     <style> nav,h1 {
-            color:darkslategrey;
+            color:yellow;
             font-size:50px;
             font-family:fantasy;
             font-weight: bolder;
             }
             </style>
             </nav>
-<!-- adding shows with validation messages on top  -->
+
+<!-- adding rides with validation messages on top  -->
 <img .img-fluid. max-width: 100%;>
-<!-- <img src="static/thismoto.jpg" class="img-fluid" alt="responsive-img"> -->
 <form action="/ride/create" method="POST" class="col-11 p-4 my-2 text-dark mx-auto">
     <input type="hidden" name="user_id" value="{{session['user_id']}}">
     
@@ -79,7 +73,7 @@
         <label>Location:
             <style> label {
                 background: fixed;
-                color:darkslategray;
+                color:yellow;
                 font-family: fantasy;
                 font-weight: bold;
                 font-size: 30px;
@@ -109,7 +103,7 @@
         <label>Description of Event:</label>
         <div><textarea name="description" cols="50" rows="5"></textarea>
             <style> textarea {
-            color:black;
+            color:yellow;
             background:fixed;
             font-size:21px;
             font-family:fantasy;
@@ -125,7 +119,7 @@
     <input type="submit" value="Add" class="btn-lg btn-dark"></input>
         <style> input,Add {
             background:fixed;
-            color: black;
+            color: yellow;
             font-size:21px;
             font-family:fantasy;
             font-weight: bolder;
@@ -133,11 +127,9 @@
             border-color: black;
         }
         </style>
-  
         
         
 
 </form>
-       
 </body>
 </html>
