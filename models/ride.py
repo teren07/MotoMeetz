@@ -41,6 +41,7 @@ class Ride:
                 ride.user = user.User(user_data)
                 rides.append(ride)
             return rides
+
     @classmethod
     def get_all_rides_with_users(cls):
         query="SELECT * FROM rides JOIN users ON rides.user_id= users.id;"
@@ -80,7 +81,7 @@ class Ride:
 
             return all_ride_instances
 
-# class method get all from cars
+# class method get all from rides
     @classmethod
     def get_all(cls,data):
         query = "SELECT * FROM rides;"
@@ -92,34 +93,27 @@ class Ride:
         return all_rides  
 
 
-    # class method to get one from car by id
+    # class method to get one from ride by id
     @classmethod
     def get_one(cls,data):
         query = "SELECT * FROM rides WHERE id = %(id)s;"
         results = connectToMySQL(cls.db_name).query_db(query,data)
         return cls(results[0])
 
-    # @classmethod
-    # def delete_car(cls,data):
-    #     query = "DELETE FROM cars WHERE id = %(id)s;"
-    #     return connectToMySQL(cls.db_name).query_db(query,data)
+
 
 
 
     @classmethod
-    def edit(cls, data):
-        query = "UPDATE rides SET title=%(location)s, date=%(date)s, "\
+    def edit(cls, id):
+        query = "UPDATE rides SET location=%(location)s, date=%(date)s, "\
         "time=%(time)s,skill_level=%(skill_level)s,bike_type=%(bike_type)s, description=%(description)s "\
         "WHERE rides.id = %(id)s;"
-        return connectToMySQL(cls.db_name).query_db(query,data)
+        return connectToMySQL(cls.db_name).query_db(query,id)
+
+
     
-    # @classmethod
-    # def delete_car(cls, id):
-    #     data={
-    #         'id':id
-    #     }
-    #     query = "DELETE FROM cars WHERE id = %(id)s;"
-    #     return connectToMySQL(cls.db_name).query_db(query,id)
+
 
     @classmethod
     def delete_ride(cls,id):
@@ -129,10 +123,11 @@ class Ride:
         query = "DELETE FROM rides WHERE id = %(id)s;"
         return connectToMySQL(cls.db_name).query_db(query,data)
 
-    # @classmethod
-    # def delete_car(cls,data):
-    #     query = "DELETE FROM cars WHERE user_id = %(user_id)s;"
-    #     return connectToMySQL(cls.db_name).query_db(query,data)
+
+    @classmethod
+    def update(cls, data):
+        query = "UPDATE rides SET location=%(location)s, date=%(date)s, time=%(time)s, skill_level=%(skill_level)s, bike_type=%(bike_type)s, skill_level=%(skill_level)s, description=%(description)s WHERE id = %(id)s;"
+        return connectToMySQL(cls.db_name).query_db(query,data)
 
     @staticmethod #validations
     def validate_newride(form_data):
@@ -161,3 +156,35 @@ class Ride:
                 is_valid =False
                 flash("Description of ride required", "ride")
             return is_valid
+
+    
+    @staticmethod #validations
+    def validate_ride(form_data):
+            is_valid = True
+            print(form_data)
+            if len (form_data["location"]) < 3:
+                is_valid =False
+                flash("Please enter a valid location", "ride")
+            if len (form_data ["date"]) < 1:
+                is_valid =False
+                flash("Date is required", "ride")
+            if len (form_data ["time"]) < 1:
+                is_valid =False
+                flash("Start time is required", "ride")
+            if len (form_data ["skill_level"]) < 1:
+                is_valid =False
+                flash("Skill level is required", "ride")
+            if len (form_data ["bike_type"]) < 1:
+                is_valid =False
+                flash("Bike type is required", "ride")
+                is_valid = False
+            # if len (form_data["year"]) < 4:
+            #     is_valid =False
+                # flash("Must input a year", "car")
+            if len (form_data ["description"]) < 3:
+                is_valid =False
+                flash("Description of ride required", "ride")
+            return is_valid
+
+    
+    
